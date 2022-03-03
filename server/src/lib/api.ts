@@ -33,6 +33,7 @@ export default class API {
   challenge: Challenge;
   metrics: Prometheus;
   private readonly s3: S3;
+  private readonly s3Public: S3;
   private readonly bucket: Bucket;
   readonly takeout: Takeout;
 
@@ -42,7 +43,8 @@ export default class API {
     this.challenge = new Challenge(this.model);
     this.metrics = new Prometheus();
     this.s3 = AWS.getS3();
-    this.bucket = new Bucket(this.model, this.s3);
+    this.s3Public = AWS.getS3Public();
+    this.bucket = new Bucket(this.model, this.s3, this.s3Public);
     this.takeout = new Takeout(this.model.db.mysql, this.s3, this.bucket);
   }
 
@@ -76,6 +78,7 @@ export default class API {
       response.redirect('/');
     });
 
+    router.get('/health', this.getHealth);
     router.get('/user_clients', this.getUserClients);
     router.post('/user_clients/:client_id/claim', this.claimUserClient);
     router.get('/user_client', this.getAccount);
@@ -523,6 +526,20 @@ export default class API {
     response.json(
       await this.model.db.getAccents(client_id, params?.locale || null)
     );
+  };
+
+  getHealth = async (request: Request, response: Response) => {
+    try {
+      //
+      const count = await this.model.db.checkConnectivity();
+      if (count === -1) {
+        response.sendStatus(500);
+      } else {
+        response.json('Ok');
+      }
+    } catch (err) {
+      response.status(400).json(err.message);
+    }
   };
 
   private getCountQueryParam = (request: Request) => {

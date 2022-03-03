@@ -15,10 +15,12 @@ const s3Zip = require('s3-zip');
 export default class Bucket {
   private model: Model;
   private s3: S3;
+  private s3public: S3;
 
-  constructor(model: Model, s3: S3) {
+  constructor(model: Model, s3: S3, s3Public: S3) {
     this.model = model;
     this.s3 = s3;
+    this.s3public = s3Public;
   }
 
   /**
@@ -26,7 +28,7 @@ export default class Bucket {
    */
   public getPublicUrl(key: string, bucketType?: string, cdn?: boolean) {
     // @TODO: add CDN handling back in
-    return this.s3.getSignedUrl('getObject', {
+    return this.s3public.getSignedUrl('getObject', {
       Bucket:
         bucketType === 'dataset'
           ? getConfig().DATASET_BUCKET_NAME

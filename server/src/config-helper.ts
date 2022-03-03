@@ -30,6 +30,7 @@ export type CommonVoiceConfig = {
   RELEASE_VERSION?: string;
   SECRET: string;
   S3_CONFIG: S3.Types.ClientConfiguration;
+  S3_PUBLIC_CONFIG: S3.Types.ClientConfiguration;
   CINCHY_CONFIG: S3.Types.ClientConfiguration;
   CINCHY_ENABLED: boolean;
   SSM_ENABLED: boolean;
@@ -82,6 +83,7 @@ const BASE_CONFIG: CommonVoiceConfig = {
   SECRET: configEntry('CV_SECRET', 'super-secure-secret'),
   ADMIN_EMAILS: configEntry('CV_ADMIN_EMAILS', null),
   S3_CONFIG: configEntry('CV_S3_CONFIG', {}, castJson),
+  S3_PUBLIC_CONFIG: configEntry('CV_S3_PUBLIC_CONFIG', {}, castJson),
   CINCHY_CONFIG: configEntry('CV_CINCHY_CONFIG', {}, castJson),
   CINCHY_ENABLED: configEntry('CV_CINCHY_ENABLED', false, castBoolean),
   SSM_ENABLED: configEntry('CV_SSM_ENABLED', false, castBoolean),

@@ -11,7 +11,7 @@ import { ChallengeLeaderboardArgument, ChallengeToken } from 'common';
 
 const s3 = AWS.getS3();
 const model = new Model();
-const bucket = new Bucket(model, s3);
+const bucket = new Bucket(model, s3, AWS.getS3Public());
 
 const db = getMySQLInstance();
 

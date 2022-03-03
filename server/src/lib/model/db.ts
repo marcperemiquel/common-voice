@@ -154,6 +154,13 @@ export default class DB {
     }
   }
 
+  async checkConnectivity(): Promise<number> {
+    const [rows, fields] = await this.mysql.query(
+      `SELECT 1 AS count`
+    );
+    return rows ? rows[0].count : -1;
+  }
+
   async getSentenceCountByLocale(locales: string[]): Promise<any> {
     const [rows] = await this.mysql.query(
       `
@@ -167,6 +174,7 @@ export default class DB {
     );
     return rows;
   }
+
   /**
    * Get valid and random clips per language
    * @param languageId
@@ -179,10 +187,10 @@ export default class DB {
   ): Promise<DBClip[]> {
     const [rows] = await this.mysql.query(
       `
-        SELECT c.id as id, 
-        c.path as path, 
+        SELECT c.id as id,
+        c.path as path,
         s.has_valid_clip as has_valid_clip,
-        c.client_id as client_id, 
+        c.client_id as client_id,
         s.text as sentence,
         c.original_sentence_id as original_sentence_id
         FROM clips c

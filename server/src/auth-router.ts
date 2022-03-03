@@ -78,7 +78,7 @@ if (DOMAIN) {
         ((
           {
             stage: 'https://commonvoice.allizom.org',
-            prod: 'https://commonvoice.mozilla.org',
+            prod: 'https://common-voice.aina.cat',
             dev: 'https://dev.voice.mozit.cloud',
             sandbox: 'https://sandbox.voice.mozit.cloud',
           } as any

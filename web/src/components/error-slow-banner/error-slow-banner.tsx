@@ -5,6 +5,9 @@ import { ExternalLinkIcon } from '../ui/icons';
 import NotificationBanner from './../notification-banner/notification-banner';
 import { Notifications } from '../../stores/notifications';
 
+const ErrorSlowBanner = () => {};
+
+/*
 const ErrorSlowBanner = () => {
   const notification: Notifications.Notification = {
     id: 99,
@@ -38,5 +41,6 @@ const ErrorSlowBanner = () => {
     <NotificationBanner key="error-slow-banner" notification={notification} />
   );
 };
+*/
 
 export default ErrorSlowBanner;
