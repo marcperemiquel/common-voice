@@ -14,6 +14,9 @@ email-opt-in-info-sub-with-challenge = Receba emails, tais como lembretes de obj
 email-opt-in-privacy-v2 = Ao optar por receber emails, você declara que concorda com a Mozilla lidar com essas informações, conforme explicado na <privacyLink>Política de privacidade</privacyLink> da Mozilla.
 indicates-required = * Indica campo obrigatório
 not-available-abbreviation = Não disponível
+banner-error-slow-1 = Desculpe, o Common Voice está lento. Obrigado pelo seu interesse.
+banner-error-slow-2 = Estamos recebendo muito tráfego no momento, estamos investigando problemas.
+banner-error-slow-link = Página de status
 
 # Don't rename the following section, its contents are auto-inserted based on the name (see scripts/pontoon-languages-to-ftl.js)
 # [Languages]
@@ -336,6 +339,9 @@ profile-form-additional-language =
     .label = Idioma adicional
 profile-form-language =
     .label = Idioma
+profile-form-variant =
+    .label = Qual variante de { $language } você fala?
+profile-form-variant-default-value = Nenhuma variante selecionada
 profile-form-accent =
     .label = Sotaque
 profile-form-custom-accent-help-text =
@@ -387,6 +393,8 @@ off = Desligar
 on = Ligar
 help-accent = Precisa de ajuda com sotaque?
 help-accent-explanation = Seu sotaque é a maneira como você pronuncia as palavras. Ele pode ser moldado de acordo com o local onde você viveu, os outros idiomas que você fala e muitos outros fatores. Você pode compartilhar qualquer informação que considere relevante aqui.
+help-variants = Precisa de ajuda com variantes?
+help-variants-explanation = Variante é uma forma específica de um idioma. Por exemplo, compartilhada por quem vive em uma área geográfica ou comunidade. Às vezes, é chamada de dialeto.
 
 ## Profile - Email
 

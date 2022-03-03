@@ -100,6 +100,8 @@ export default class API {
     router.post('/user_client/takeout/:id/links', this.getTakeoutLinks);
 
     router.get('/language/accents/:locale?', this.getAccents);
+    router.get('/language/variants/:locale?', this.getVariants);
+
     router.get('/:locale/sentences', this.getRandomSentences);
     router.post('/skipped_sentences/:id', this.createSkippedSentence);
     router.post('/skipped_clips/:id', this.createSkippedClip);
@@ -540,6 +542,12 @@ export default class API {
     } catch (err) {
       response.status(400).json(err.message);
     }
+  };
+
+  getVariants = async ({ client_id, params }: Request, response: Response) => {
+    response.json(
+      await this.model.db.getVariants(client_id, params?.locale || null)
+    );
   };
 
   private getCountQueryParam = (request: Request) => {

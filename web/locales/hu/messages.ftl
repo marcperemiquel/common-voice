@@ -14,6 +14,9 @@ email-opt-in-info-sub-with-challenge = Kapjon e-maileket, köztük kihívásokat
 email-opt-in-privacy-v2 = Azzal, hogy az e-mailek fogadását kéri, beleegyezik abba, hogy a Mozilla az <privacyLink>adatvédelmi irányelvekben</privacyLink> leírt módon kezelje ezeket az adatokat.
 indicates-required = * Kötelező mezőt jelez
 not-available-abbreviation = Nincs
+banner-error-slow-1 = Sajnáljuk, a Common Voice lassan fut. Köszönjük érdeklődését.
+banner-error-slow-2 = Nagy a forgalom, és jelenleg vizsgáljuk a problémákat.
+banner-error-slow-link = Állapot oldal
 
 # Don't rename the following section, its contents are auto-inserted based on the name (see scripts/pontoon-languages-to-ftl.js)
 # [Languages]
@@ -342,6 +345,9 @@ profile-form-additional-language =
     .label = További nyelv
 profile-form-language =
     .label = Nyelv
+profile-form-variant =
+    .label = A(z) { $language } melyik változatát beszéli?
+profile-form-variant-default-value = Nincs kiválasztva változat
 profile-form-accent =
     .label = Akcentus
 profile-form-custom-accent-help-text =
@@ -393,6 +399,8 @@ off = Ki
 on = Be
 help-accent = Segítségre van szüksége az akcentussal kapcsolatban?
 help-accent-explanation = Az akcentusa az, ahogy a szavakat kiejti. Alakíthatja hogy hol élt, milyen más nyelveket beszél, és sok egyéb tényező. Itt megoszthat minden olyan információt, amelyet relevánsnak érez.
+help-variants = Segítségre van szüksége a változatokkal kapcsolatban?
+help-variants-explanation = A változatok egy nyelv sajátos formáját jelentik – például egy adott földrajzi területen vagy közösségben élők közös nyelvi formáját. Néha ezeket dialektusoknak nevezik.
 
 ## Profile - Email
 

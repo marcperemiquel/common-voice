@@ -14,6 +14,9 @@ email-opt-in-info-sub-with-challenge = Ontvang e-mailberichten zoals herinnering
 email-opt-in-privacy-v2 = Door u in te schrijven voor het ontvangen van e-mailberichten, verklaart u dat u akkoord gaat met het verwerken van deze informatie door Mozilla in overeenstemming met Mozilla’s <privacyLink>Privacybeleid</privacyLink>.
 indicates-required = * Geeft verplicht veld aan
 not-available-abbreviation = NB
+banner-error-slow-1 = Sorry, Common Voice werkt langzaam. Bedankt voor uw interesse.
+banner-error-slow-2 = We ontvangen veel verkeer en zijn momenteel de problemen aan het onderzoeken.
+banner-error-slow-link = Statuspagina
 
 # Don't rename the following section, its contents are auto-inserted based on the name (see scripts/pontoon-languages-to-ftl.js)
 # [Languages]
@@ -336,6 +339,9 @@ profile-form-additional-language =
     .label = Extra taal
 profile-form-language =
     .label = Taal
+profile-form-variant =
+    .label = Welke variant van { $language } spreekt u?
+profile-form-variant-default-value = Geen variant geselecteerd
 profile-form-accent =
     .label = Accent
 profile-form-custom-accent-help-text =
@@ -387,6 +393,8 @@ off = Uit
 on = Aan
 help-accent = Hulp nodig met accent?
 help-accent-explanation = Uw accent is de manier waarop u woorden uitspreekt. Het kan worden gevormd door waar u hebt gewoond, welke andere talen u spreekt en tal van andere factoren. U kunt hier alle informatie delen die u relevant vindt.
+help-variants = Hulp nodig bij varianten?
+help-variants-explanation = Varianten zijn een specifieke vorm van een taal – bijvoorbeeld gesproken door mensen die in een gebied of gemeenschap wonen. Soms worden dit dialecten genoemd.
 
 ## Profile - Email
 
