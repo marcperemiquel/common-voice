@@ -22,6 +22,7 @@ import authRouter, { authMiddleware } from './auth-router';
 import fetchLegalDocument from './fetch-legal-document';
 import * as proxy from 'http-proxy-middleware';
 import { createTaskQueues, TaskQueues } from './lib/takeout';
+import * as compression from 'compression';
 const HttpStatus = require('http-status-codes');
 
 require('source-map-support').install();
@@ -39,12 +40,12 @@ const CSP_HEADER = [
   `default-src 'none'`,
   `child-src 'self' blob:`,
   `style-src 'self' https://fonts.googleapis.com 'unsafe-inline'`,
-  `img-src 'self' www.google-analytics.com www.gstatic.com https://www.gstatic.com https://*.amazonaws.com https://*.amazon.com https://gravatar.com https://*.mozilla.org https://*.allizom.org data:`,
-  `media-src data: blob: https://*.amazonaws.com https://*.amazon.com`,
+  `img-src 'self' www.google-analytics.com www.gstatic.com https://www.gstatic.com https://*.amazonaws.com https://*.amazon.com https://*.blob.core.windows.net https://gravatar.com https://*.mozilla.org https://*.allizom.org data:`,
+  `media-src data: blob: https://*.amazonaws.com https://*.amazon.com https://*.aina.cat https://*.blob.core.windows.net`,
   // Note: we allow unsafe-eval locally for certain webpack functionality.
-  `script-src 'self' 'unsafe-eval' 'sha256-fIDn5zeMOTMBReM1WNoqqk2MBYTlHZDfCh+vsl1KomQ=' 'sha256-Hul+6x+TsK84TeEjS1fwBMfUYPvUBBsSivv6wIfKY9s=' https://www.google-analytics.com https://pontoon.mozilla.org https://sentry.prod.mozaws.net`,
+  `script-src 'self' 'unsafe-eval' 'sha256-fIDn5zeMOTMBReM1WNoqqk2MBYTlHZDfCh+vsl1KomQ=' 'sha256-Hul+6x+TsK84TeEjS1fwBMfUYPvUBBsSivv6wIfKY9s=' https://www.google-analytics.com https://pontoon.mozilla.org https://sentry.prod.mozaws.net https://o1155028.ingest.sentry.io`,
   `font-src 'self' https://fonts.gstatic.com`,
-  `connect-src 'self' blob: https://pontoon.mozilla.org/graphql https://*.amazonaws.com https://*.amazon.com https://www.gstatic.com https://www.google-analytics.com https://sentry.prod.mozaws.net https://basket.mozilla.org https://basket-dev.allizom.org https://rs.fullstory.com https://edge.fullstory.com`,
+  `connect-src 'self' blob: https://pontoon.mozilla.org/graphql https://*.amazonaws.com https://*.amazon.com https://*.aina.cat https://*.blob.core.windows.net https://www.gstatic.com https://www.google-analytics.com https://sentry.prod.mozaws.net https://o1155028.ingest.sentry.io https://basket.mozilla.org https://basket-dev.allizom.org https://rs.fullstory.com https://edge.fullstory.com`,
 ].join(';');
 
 Sentry.init({
@@ -88,6 +89,7 @@ export default class Server {
         response.set('X-Environment', ENVIRONMENT);
 
         // security-centric headers
+        response.removeHeader('x-powered-by');
         response.set('X-Production', PROD ? 'On' : 'Off');
         response.set('Content-Security-Policy', CSP_HEADER);
         response.set('X-Content-Type-Options', 'nosniff');
@@ -102,7 +104,7 @@ export default class Server {
 
     // Enable Sentry request handler
     app.use(Sentry.Handlers.requestHandler());
-
+    app.use(compression());
     if (PROD) {
       app.use(this.ensureSSL);
     }

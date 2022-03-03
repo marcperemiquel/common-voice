@@ -46,6 +46,7 @@ import {
 } from './locale-helpers';
 import { Flags } from '../stores/flags';
 import { ReactLocalization, LocalizationProvider } from '@fluent/react';
+// import ErrorSlowBanner from './error-slow-banner/error-slow-banner';
 const rtlLocales = require('../../../locales/rtl.json');
 const ListenPage = React.lazy(
   () => import('./pages/contribution/listen/listen')
@@ -53,7 +54,7 @@ const ListenPage = React.lazy(
 const SpeakPage = React.lazy(() => import('./pages/contribution/speak/speak'));
 
 const SENTRY_FE_DSN =
-  'https://4a940c31e4e14d8fa6984e919a56b9fa@sentry.prod.mozaws.net/491';
+  'https://09d5195c4bf5456d9c5b07086eb33819@o1155028.ingest.sentry.io/6235187';
 
 interface PropsFromState {
   api: API;
@@ -245,6 +246,8 @@ let LocalizedPage: any = class extends React.Component<
                     )
                 )}
             </div>
+
+            {/* <ErrorSlowBanner /> */}
 
             <Switch>
               {[

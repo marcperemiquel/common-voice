@@ -37,7 +37,7 @@ export default class Clip {
   constructor(model: Model) {
     this.s3 = AWS.getS3();
     this.model = model;
-    this.bucket = new Bucket(this.model, this.s3);
+    this.bucket = new Bucket(this.model, this.s3, AWS.getS3Public());
   }
 
   getRouter() {
